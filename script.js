@@ -51,33 +51,37 @@ window.addEventListener('resize', () => {
     closeMenu.style.display = 'none';
   }
 });
-
 // Get all sections
 const sections = document.querySelectorAll('section');
 
 // Get the current year
 const currentYear = new Date().getFullYear();
-
-// Set the current year in the element with the ID "currentYear"
 document.getElementById('currentYear').textContent = currentYear;
 
-// Listen for scroll event
+// Throttle scroll event for better performance
+let scrollTimeout;
 window.addEventListener('scroll', () => {
-  let currentSection = '';
+  if (scrollTimeout) return;
 
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
+  scrollTimeout = setTimeout(() => {
+    let currentSection = '';
 
-    if (pageYOffset >= sectionTop - sectionHeight / 3) {
-      currentSection = section.getAttribute('id');
-    }
-  });
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
 
-  navLinks.forEach((link) => {
-    link.classList.remove('active');
-    if (link.getAttribute('href').includes(currentSection)) {
-      link.classList.add('active');
-    }
-  });
+      if (pageYOffset >= sectionTop - sectionHeight / 3) {
+        currentSection = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').includes(currentSection)) {
+        link.classList.add('active');
+      }
+    });
+
+    scrollTimeout = null;
+  }, 100); // 100ms throttle
 });

@@ -35,8 +35,8 @@ header {
 
 nav ul {
   display: flex;
-  justify-content: space-around;
-  gap: 1rem;
+  justify-content: space-evenly;
+
   align-items: center;
   list-style: none;
   padding: 1rem 0;
@@ -48,7 +48,6 @@ nav ul {
   font-size: 2.4rem;
   cursor: pointer;
   color: #1f1f1f;
-  margin-top: 0 !important;
 }
 .bold {
   font-weight: bold;
@@ -119,13 +118,17 @@ p {
   line-height: 2;
 }
 
+#about p {
+  font-size: 1.2rem !important;
+}
+
 #services p {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  margin-top: -1rem;
 }
 
 #services h3 {
-  padding-top: 1rem;
-  padding-top: -1rem;
+  margin-top: 1rem;
 }
 
 /* Give space between h3 and p inside service or portfolio */
@@ -145,8 +148,8 @@ ul li {
 }
 
 .portfolio-item {
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.65); /* for similar effect */
+
   border-radius: 1.2rem;
   padding: 2rem;
   margin-bottom: 3rem;
@@ -167,7 +170,7 @@ ul li {
 .btn {
   display: inline-block;
   padding: 1.2rem 2.4rem;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 254, 254, 0.986);
   backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
@@ -175,7 +178,7 @@ ul li {
   text-decoration: none;
   font-weight: bold;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .btn:hover {
@@ -304,6 +307,10 @@ footer {
     flex-direction: column;
   }
 
+  section #hero {
+    margin-top: 0;
+  }
+
   /* Hero Section */
   #hero {
     padding: 6rem 2rem;
@@ -355,9 +362,9 @@ footer {
 
   .close-menu {
     display: none;
-    font-size: 2.8rem;
+    font-size: 2rem;
     position: fixed;
-    top: 2rem;
+    top: 1rem;
     right: 2.5rem; /* Align to the right */
     z-index: 1001;
     cursor: pointer;
